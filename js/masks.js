@@ -2,6 +2,16 @@
  * Masks for input fields
  */
 
+function maskCPF_CNPJ(input) {
+  if (input.classList.contains('cnpj')) {
+    return maskCNPJ(input);
+  }
+
+  if (input.classList.contains('cpf')) {
+    return maskCPF(input);
+  }
+}
+
 // CNPJ mask (format: XX.XXX.XXX/XXXX-XX)
 function maskCNPJ(input) {
   let value = input.value.replace(/\D/g, '');
@@ -18,6 +28,28 @@ function maskCNPJ(input) {
     value = value.replace(/(\d{4})(\d)/, '$1-$2');
   }
   
+  input.value = value;
+  return value;
+}
+
+// CPF mask (format: XXX.XXX.XXX-XX)
+function maskCPF(input) {
+  let value = input.value.replace(/\D/g, '');
+  
+  if (value.length > 11) {
+    value = value.slice(0, 11);
+  }
+
+  if (value.length > 3) {
+    value = value.replace(/^(\d{3})(\d)/, '$1.$2');
+  }
+  if (value.length > 6) {
+    value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+  }
+  if (value.length > 9) {
+    value = value.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+  }
+
   input.value = value;
   return value;
 }
@@ -42,29 +74,40 @@ function maskPhone(input) {
 
 // Money mask (format: R$ X.XXX,XX)
 function maskMoney(input) {
-  let value = input.value.replace(/\D/g, '');
-  
-  // Convert to cents and format
-  value = (parseInt(value) / 100).toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2
-  });
-  
-  input.value = value;
-  return value;
+  // Remove tudo que não for número
+  let valor = input.value.replace(/[^\d]/g, '');
+
+  // Se estiver vazio ou não for número, retorna valor mínimo
+  if (!valor || isNaN(valor)) {
+    input.value = 'R$ 0,00';
+    return;
+  }
+
+  // Converte para centavos e formata
+  valor = (parseInt(valor, 10) / 100).toFixed(2);
+  let [inteiro, decimal] = valor.split('.');
+
+  // Adiciona separadores de milhar
+  inteiro = inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  input.value = `R$ ${inteiro},${decimal}`;
 }
+
 
 // Apply masks to specific inputs
 function setupMasks() {
-  // CNPJ mask
-  const cnpjInput = document.getElementById('cnpj');
-  if (cnpjInput) {
-    cnpjInput.addEventListener('input', () => maskCNPJ(cnpjInput));
-    cnpjInput.addEventListener('focus', () => {
-      setTimeout(() => maskCNPJ(cnpjInput), 0);
-    });
-  }
+
+  // Seleciona todos os tipos
+  const allInputs = $('.cnpj, .cpf, .cpfCnpj');
+  // Remove eventos antigos e adiciona novos
+  allInputs.off('input focus').on('input focus', function (e) {
+    const el = this;
+    if (e.type === 'focus') {
+      setTimeout(() => applyDynamicMaskCpfCnpj(el), 0);
+    } else {
+      applyDynamicMaskCpfCnpj(el);
+    }
+  });
   
   // Phone mask
   const phoneInput = document.getElementById('telefone');
@@ -75,25 +118,28 @@ function setupMasks() {
     });
   }
   
-  // Money masks
-  const moneyInputs = [
-    document.getElementById('faturamentoAnual'),
-    document.getElementById('vendaCartaoAnual')
-  ];
-  
-  moneyInputs.forEach(input => {
-    if (input) {
-      input.addEventListener('input', () => maskMoney(input));
-      input.addEventListener('focus', () => {
-        if (!input.value) {
-          input.value = 'R$ 0,00';
-        }
-      });
-      input.addEventListener('blur', () => {
-        if (input.value === 'R$ 0,00') {
-          input.value = '';
-        }
-      });
+  const inputsMoney = $('.money');
+  inputsMoney.off('input focus').on('input focus blur', function (e) {
+    const el = this;
+    if (e.type === 'input') {
+      maskMoney(el);
+    } else if (e.type === 'focus') {
+      $(el).removeClass('error');
+      el.nextElementSibling.classList.remove('visible')
     }
   });
+}
+
+function applyDynamicMaskCpfCnpj(input) {
+  const $input = $(input);
+  $input.removeClass('error');
+  input.nextElementSibling.classList.remove('visible')
+
+  if ($input.hasClass('cpf')) {
+    $input.val(maskCPF(input));
+  } else if ($input.hasClass('cnpj')) {
+    $input.val(maskCNPJ(input));
+  } else if ($input.hasClass('cpfCnpj')) {
+    $input.val(maskCPF(input));
+  }
 }

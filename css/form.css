@@ -230,7 +230,7 @@ input.error:focus, select.error:focus {
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, #4361ee, #4cc9f0);
+    background: linear-gradient(90deg,#17bb82 19%, #1d5e48 100%);
 }
 
 input, select {

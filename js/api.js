@@ -1,13 +1,9 @@
-/**
- * API communication functions
- */
-
 // Mock API endpoint (replace with your actual backend endpoint)
-const API_ENDPOINT = 'https://wn8n.starksolucoes.site/webhook/gerar-pre-diagnostico-vendas-cartao';
+const API_ENDPOINT = 'https://wn8n.starksolucoes.site/webhook/gerar-pre-diagnostico';
 
-// Store PDF data when received
 let pdfData = null;
 const formDataObject = {};
+let tipoFormulario = '';
 
 /**
  * Submit form data to the API
@@ -16,12 +12,11 @@ const formDataObject = {};
  */
 async function submitFormData(formData) {
   try {
-    
-    // Convert FormData to JSON object
-    //const formDataObject = {};
     formData.forEach((value, key) => {
       formDataObject[key] = value;
     });
+
+    tipoFormulario = formDataObject.tipoFormulario;
 
     const response = await fetch(API_ENDPOINT, {
       method: 'POST',
@@ -35,9 +30,8 @@ async function submitFormData(formData) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     
-    // For PDF response
     const blob = await response.blob();
-    pdfData = blob; // Store the PDF data
+    pdfData = blob; 
     return blob;
     
   } catch (error) {
@@ -58,16 +52,12 @@ function downloadPdf() {
   // Create a URL for the blob
   const url = URL.createObjectURL(pdfData);
   
-  // Pdf name
-  let razaoSocial = formDataObject.razaoSocial;
-  razaoSocial = razaoSocial.replace(/\s+/g, '_');
-  razaoSocial = razaoSocial.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  const pdfName = `pre_diagnostico_recuperacao_em_vendas-${razaoSocial}.pdf`;
+
 
   // Create a link element
   const link = document.createElement('a');
   link.href = url;
-  link.download = pdfName;
+  link.download = pdfName();
   
   // Append to the document
   document.body.appendChild(link);
@@ -78,4 +68,27 @@ function downloadPdf() {
   // Clean up
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
+}
+
+function pdfName() {
+  if (tipoFormulario == "vendasCartao") {
+    let razaoSocial = formDataObject.razaoSocial;
+    razaoSocial = razaoSocial.replace(/[^a-zA-Z0-9\s]/g, '');
+    return `Pré-Diagnóstico – Recuperação em Vendas por Cartão - ${razaoSocial}.pdf`;
+
+  } else if (tipoFormulario == "veiculo") {
+    let nome = formDataObject.nome;
+    nome = nome.replace(/[^a-zA-Z0-9\s]/g, '');
+    return `Pré-diagnóstico - Financiamento de Veículo - ${nome}.pdf`;
+
+  } else if (tipoFormulario == "medico") {
+    let nome = formDataObject.nome;
+    nome = nome.replace(/[^a-zA-Z0-9\s]/g, '');
+    return `Pré-diagnóstico - Plano de Saúde - ${nome}.pdf`;
+
+  } else if (tipoFormulario == "superendividamento") {
+    let nome = formDataObject.nome;
+    nome = nome.replace(/[^a-zA-Z0-9\s]/g, '');
+    return `Pré-diagnóstico - Superindividamento - ${nome}.pdf`;
+  }
 }

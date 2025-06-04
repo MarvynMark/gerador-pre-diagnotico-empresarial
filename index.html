@@ -1,126 +1,134 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulário de Pré-Diagnóstico Empresarial</title>
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/form.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gerenciamento - AuditaCash</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .main-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8em; 
+            font-weight: 700; 
+            margin-bottom: 45px; 
+            text-align: center;
+            letter-spacing: 1px; 
+            background: linear-gradient(135deg, #144635 0%, #265408 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            text-shadow: 2px 7px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            width: 100%;
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .botao {
+            background-image: linear-gradient(135deg, #229f74 24%, #144635 90%);
+            color: white;
+            border: none;
+            padding: 30px 40px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            flex-grow: 1;
+            flex-basis: calc(50% - 25px);
+            min-width: 280px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .botao:hover {
+            transform: translateY(-5px);
+            background-image: linear-gradient(135deg, #2a660e 0%, #1b5720 100%);
+            box-shadow: 0 8px 25px rgba(7, 143, 2, 0.3); 
+        }
+
+        .botao:active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.2em;
+                margin-bottom: 35px;
+                letter-spacing: 0.5px;
+            }
+
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .botao {
+                width: 90%;
+                padding: 25px 30px;
+                font-size: 1.3em;
+                flex-basis: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.8em;
+            }
+
+            .botao {
+                padding: 20px 25px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="form-container">
-      <header class="form-header">
-        <h1>Diagnóstico Vendas no cartão Audita Cash</h1>
-        <p>Preencha os dados da empresa para gerar um relatório de pré-diagnóstico personalizado</p>
-      </header>
 
-      <form id="diagnosticForm">
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="razaoSocial">Razão Social</label>
-            <input type="text" id="razaoSocial" name="razaoSocial" required>
-            <span class="error-message" id="razaoSocial-error"></span>
-          </div>
+    <h1 class="main-title">Gerador de Pré-Diagnósticos AuditaCash</h1>
 
-          <div class="form-group">
-            <label for="cnpj">CNPJ</label>
-            <input type="text" id="cnpj" name="cnpj" required>
-            <span class="error-message" id="cnpj-error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="segmento">Segmento</label>
-            <select id="segmento" name="segmento" required>
-              <option value="">Selecione um segmento</option>
-              <option value="comercio">Comércio</option>
-              <option value="servicos">Serviços</option>
-              <option value="industria">Indústria</option>
-              <option value="tecnologia">Tecnologia</option>
-              <option value="saude">Saúde</option>
-              <option value="educacao">Educação</option>
-              <option value="alimentacao">Alimentação</option>
-              <option value="turismo">Turismo</option>
-              <option value="outros">Outros</option>
-            </select>
-            <span class="error-message" id="segmento-error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="localizacao">Localização</label>
-            <input type="text" id="localizacao" name="localizacao" required>
-            <span class="error-message" id="localizacao-error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="telefone">Telefone (WhatsApp)</label>
-            <input type="text" id="telefone" name="telefone" required>
-            <span class="error-message" id="telefone-error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="responsavel">Responsável pelo diagnóstico</label>
-            <input type="text" id="responsavel" name="responsavel" required>
-            <span class="error-message" id="responsavel-error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="faturamentoAnual">Faturamento anual</label>
-            <input type="text" id="faturamentoAnual" name="faturamentoAnual" required>
-            <span class="error-message" id="faturamentoAnual-error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="vendaCartaoAnual">Venda no cartão anual</label>
-            <input type="text" id="vendaCartaoAnual" name="vendaCartaoAnual" required>
-            <span class="error-message" id="vendaCartaoAnual-error"></span>
-          </div>
-
-          
-        </div>
-
-        <div class="form-actions">
-          <button type="submit" id="submitButton" class="btn-primary">
-            <span class="btn-text">Calcular resultados</span>
-            <span class="spinner hidden"></span>
-          </button>
-        </div>
-      </form>
+    <div class="container">
+        <a href="pages/form-vendas-no-cartao.html" class="botao">Diagnóstico Recuperação de Vendas no cartão</a>
+        <a href="pages/form-veiculo.html" class="botao">Diagnóstico de Financiamento de Veículo</a>
+        <a href="pages/form-medico.html" class="botao">Diagnóstico Aumento Abusivo de Plano de Saúde</a>
+        <a href="pages/form-superendividamento.html" class="botao">Diagnóstico Revisão de Dívidas (Superendividamento)</a>
     </div>
-  </div>
 
-  <!-- Modal Success -->
-  <div id="successModal" class="modal-overlay">
-    <div class="modal">
-      <div class="success-message">
-        <h2>Pré-Diagnóstico concluído com sucesso!</h2>
-        <p>Seu relatório está pronto para download.</p>
-        <button id="downloadButton" class="btn-secondary">
-          <span>Baixar Relatório PDF</span>
-        </button>
-        <button id="newDiagnosticButton" class="btn-outline">Novo Diagnóstico</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Error -->
-  <div id="errorModal" class="modal-overlay">
-    <div class="modal">
-      <div class="error-message-global">
-        <h2>Ocorreu um erro ao processar os dados</h2>
-        <p>Por favor, tente novamente mais tarde.</p>
-        <button id="tryAgainButton" class="btn-outline">Tentar Novamente</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/masks.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/form.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>

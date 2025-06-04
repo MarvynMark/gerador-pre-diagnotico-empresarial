@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Pré-Diagnóstico Superendividamento</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/form.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="">
+      <button class="btn-primary" style="height: 10px;padding-left: 6px;padding-right: 13px;" onclick="window.location.href='../index.html'">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAABMElEQVR4nO3bMUoDURSG0Ww0N8ROe0MEgzauQiUWugAbiwtvIVq5CK0V1A04vyKJ54Pph8N7c+eFzGwmSZIkSZIkSdLeNL88Pv/re9jZltv1RV2t3v76PnayxfXq4uju7AXgRLzD283r/dPDG8AAr58HwASvAWZ4DTDDa4AZXgPM8BpghtcAM7wGmOE1wAyvAWZ4DTDDa4CfP0lNxesvwH25fn1g9B5f3waEN6YDwhvTVyC8MX0LwxvZM/Dg5uT0Y2g8Gho9dQtDHPkUhjjy1xiIIz9RQRz5kXS5XW+SwVL/+Sj3Eyux/LUjQyyA2UosgNl2LoDZM7EAZoOlAGbTuQBmrzgFMEMsgBliAcwQC2CGWAAzxAI4rYXPHPKW2/XGCgyb+9RLkiRJkiRJkqRZ1jsYgIjl2MgDrwAAAABJRU5ErkJggg==" alt="left" width="30" height="30"><span class="btn-text">&nbsp;Voltar</span>
+            
+      </button>
+    </div>
+    <div class="form-container">
+      <header class="form-header">
+        <h1>Formulário de Pré-Diagnóstico de viabilidade de suspensão/revisão de dívidas pela lei do superendividamento</h1>
+        <p>Preencha os dados da empresa para gerar um relatório de pré-diagnóstico personalizado</p>
+      </header>
+
+      <form id="diagnosticSuperendividamentoForm">
+        <input type="text" id="tipoFormulario" name="tipoFormulario" value="superendividamento" hidden>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required>
+            <span class="error-message" id="nome-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="profissao">Profissão</label>
+            <select id="profissao" name="profissao" required>
+              <option value="">Selecione uma profissão</option>
+              <option value="1">Forças Armadas</option>
+              <option value="2">Servidor Público (policial)</option>
+              <option value="3">Servidor Público Federal</option>
+              <option value="4">Servidor Público Estadual</option>
+              <option value="5">Servidor Público Municipal</option>
+              <option value="6">Aposentado(a)</option>
+              <option value="7">Pensionista do INSS</option>
+              <option value="8">Trabalhador CLT</option>
+              <option value="9">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="rendimentoTotal ">Rendimento total (sem desconto)</label>
+            <input type="text" id="rendimentoTotal" name="rendimentoTotal" class="money" required>
+            <span class="error-message" id="rendimentoTotal-error"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="despesasFixas ">Valor total de gastos mensais (despesas fixas e essenciais)</label>
+            <input type="text" id="despesasFixas" name="despesasFixas" class="money" required>
+            <span class="error-message" id="despesasFixas-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="valorQueSobraAposDescontos">Valor que sobra após descontos</label>
+            <input type="text" id="valorQueSobraAposDescontos" name="valorQueSobraAposDescontos" class="money" required>
+            <span class="error-message" id="valorQueSobraAposDescontos-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="socioDeEmpresa">Sócio de empresa</label>
+            <input type="text" id="socioDeEmpresa" name="socioDeEmpresa" required>
+            <span class="error-message" id="socioDeEmpresa-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="possuiPatologia">Possui patologia/doença</label>
+            <select id="possuiPatologia" name="possuiPatologia" required>
+              <option value="">Selecione uma opção</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+            <span class="error-message" id="possuiPatologia-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="possuiDependentes">Possui dependentes financeiros</label>
+             <select id="possuiDependentes" name="possuiDependentes" required>
+              <option value="">Selecione uma opção</option>
+              <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
+            </select>
+            <span class="error-message" id="possuiDependentes-error"></span>
+          </div>
+
+          <div class="form-group" id="divAlgumDependenteComPatologia" style="display: none;">
+            <label for="algumDependenteComPatologia">Algum dependente com patologia/doença</label>
+             <select id="algumDependenteComPatologia" name="algumDependenteComPatologia">
+              <option value="">Selecione uma opção</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+            <span class="error-message" id="algumDependenteComPatologia-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="telefone">Telefone (WhatsApp)</label>
+            <input type="text" id="telefone" name="telefone" required>
+            <span class="error-message" id="telefone-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="responsavel">Responsável pelo diagnóstico</label>
+            <input type="text" id="responsavel" name="responsavel" required>
+            <span class="error-message" id="responsavel-error"></span>
+          </div>
+          
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submitButton" class="btn-primary">
+            <span class="btn-text">Calcular resultados</span>
+            <span class="spinner hidden"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Success -->
+  <div id="successModal" class="modal-overlay">
+    <div class="modal">
+      <div class="success-message">
+        <h2>Pré-Diagnóstico concluído com sucesso!</h2>
+        <p>Seu relatório está pronto para download.</p>
+        <button id="downloadButton" class="btn-secondary">
+          <span>Baixar Relatório PDF</span>
+        </button>
+        <button id="newDiagnosticButton" class="btn-outline">Novo Diagnóstico</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Error -->
+  <div id="errorModal" class="modal-overlay">
+    <div class="modal">
+      <div class="error-message-global">
+        <h2>Ocorreu um erro ao processar os dados</h2>
+        <p>Por favor, tente novamente mais tarde.</p>
+        <button id="tryAgainButton" class="btn-outline">Tentar Novamente</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/jquery-3.7.1.min.js"></script>
+  <script src="../js/masks.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/form.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

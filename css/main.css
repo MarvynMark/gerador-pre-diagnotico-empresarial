@@ -208,3 +208,15 @@ button {
     opacity: 1;
   }
 }
+
+.tooltip-follow {
+  position: fixed;
+  padding: 6px 10px;
+  background: rgb(124, 233, 130);
+  color: rgb(12, 66, 7);
+  font-size: 14px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pré-Diagnóstico Financiamento de Veículo</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/form.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="">
+      <button class="btn-primary" style="height: 10px;padding-left: 6px;padding-right: 13px;" onclick="window.location.href='../index.html'">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAABMElEQVR4nO3bMUoDURSG0Ww0N8ROe0MEgzauQiUWugAbiwtvIVq5CK0V1A04vyKJ54Pph8N7c+eFzGwmSZIkSZIkSdLeNL88Pv/re9jZltv1RV2t3v76PnayxfXq4uju7AXgRLzD283r/dPDG8AAr58HwASvAWZ4DTDDa4AZXgPM8BpghtcAM7wGmOE1wAyvAWZ4DTDDa4CfP0lNxesvwH25fn1g9B5f3waEN6YDwhvTVyC8MX0LwxvZM/Dg5uT0Y2g8Gho9dQtDHPkUhjjy1xiIIz9RQRz5kXS5XW+SwVL/+Sj3Eyux/LUjQyyA2UosgNl2LoDZM7EAZoOlAGbTuQBmrzgFMEMsgBliAcwQC2CGWAAzxAI4rYXPHPKW2/XGCgyb+9RLkiRJkiRJkqRZ1jsYgIjl2MgDrwAAAABJRU5ErkJggg==" alt="left" width="30" height="30"><span class="btn-text">&nbsp;Voltar</span>
+            
+      </button>
+    </div>
+    <div class="form-container">
+      <header class="form-header">
+        <h1>Formulário de Pré-Diagnóstico de Financiamento de Veículo</h1>
+        <p>Preencha os dados da empresa para gerar um relatório de pré-diagnóstico personalizado</p>
+      </header>
+
+      <form id="diagnosticVeiculoForm" class="customTooltipAlvo">
+        <input type="text" id="tipoFormulario" name="tipoFormulario" value="veiculo" hidden>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="pessoaFisicaOuJuridica">Pessoa física ou jurídica</label>
+             <select id="pessoaFisicaOuJuridica" name="pessoaFisicaOuJuridica" required>
+              <option value="">Selecione uma opção</option>
+              <option value="fisica" selected>Pessoa Física</option>
+              <option value="juridica">Pessoa Jurídica</option>
+            </select>
+            <span class="error-message" id="pessoaFisicaOuJuridica-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="nome" id="lbNome">Nome</label>
+            <input type="text" id="nome" name="nome" required>
+            <span class="error-message" id="nome-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label id="lbCpfCnpj" for="cpfCnpj" id="lbCpfCnpj">CPF</label>
+            <input type="text" id="cpfCnpj" name="cpfCnpj" class="cpf" required>
+            <span class="error-message" id="cpfCnpj-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="mesAnoAssinatura">Mês e ano da assinatura do contrato</label>
+            <input type="text" id="mesAnoAssinatura" name="mesAnoAssinatura" placeholder="MM/AAAA" required>
+            <span class="error-message" id="mesAnoAssinatura-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="valorDoVeiculo">Valor do veículo</label>
+            <input type="text" id="valorDoVeiculo" name="valorDoVeiculo" class="money" placeholder="R$ 0,00" required>
+            <span class="error-message" id="valorDoVeiculo-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="valorFinanciamento">Valor financiado</label>
+            <input type="text" id="valorFinanciamento" name="valorFinanciamento" class="money" placeholder="R$ 0,00" required>
+            <span class="error-message" id="valorFinanciamento-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="numeroTotalParcelas">Números tota de parcelas</label>
+            <input type="number" id="numeroTotalParcelas" name="numeroTotalParcelas" required>
+            <span class="error-message" id="numeroTotalParcelas-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="numeroParcelasRestantes">Números de parcelas que faltam pagar</label>
+            <input type="number" id="numeroParcelasRestantes" name="numeroParcelasRestantes" required>
+            <span class="error-message" id="numeroParcelasRestantes-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="temSeguroEmbutido">Tem seguro embutido no contrato de financiamento?</label>
+             <select id="temSeguroEmbutido" name="temSeguroEmbutido" required>
+              <option value="">Selecione uma opção</option>
+              <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
+              <option value="Não sei">Não sei</option>
+            </select>
+            <span class="error-message" id="temSeguroEmbutido-error"></span>
+          </div>
+
+           <div class="form-group" id="divSabeValorNoContrato" style="display: none">
+            <label for="sabeValorNoContrato">Se tem seguro, sabe o valor que consta no contrato?</label>
+             <select id="sabeValorNoContrato" name="sabeValorNoContrato">
+              <option value="">Selecione uma opção</option>
+              <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
+              <option value="Não sei">Não sei</option>
+            </select>
+            <span class="error-message" id="sabeValorNoContrato-error"></span>
+          </div>
+
+          <div class="form-group" id="divValorQueConstaNoContrato" style="display: none">
+            <label for="valorQueConstaNoContrato">Valor que consta no contrato</label>
+            <input type="text" id="valorQueConstaNoContrato" name="valorQueConstaNoContrato" class="money" placeholder="R$ 0,00">
+            <span class="error-message" id="valorQueConstaNoContrato-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="motivoDaAnalise">Você busca a análise do contrato por qual motivo?</label>
+             <select id="motivoDaAnalise" name="motivoDaAnalise" required>
+              <option value="">Selecione uma opção</option>
+              <option value="1">Estou "apertado", preciso pagar menos</option>
+              <option value="2">Estou sem dinheiro, em breve o carro já entra em busca e apreensão</option>
+              <option value="3">Veículo já em busca e apreensão</option>
+              <option value="4">Tenho condições para pagar, mas quero saber se tem abusividades</option>
+              <option value="5">Veículo já foi apreendido, quero saber se ainda há solução</option>
+            </select>
+            <span class="error-message" id="motivoDaAnalise-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="telefone">Telefone (WhatsApp)</label>
+            <input type="text" id="telefone" name="telefone" required>
+            <span class="error-message" id="telefone-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="responsavel">Responsável pelo diagnóstico</label>
+            <input type="text" id="responsavel" name="responsavel" required>
+            <span class="error-message" id="responsavel-error"></span>
+          </div>          
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submitButton" class="btn-primary" disabled style="cursor: not-allowed;">
+            <span class="btn-text">Calcular resultados</span>
+            <span class="spinner hidden"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Success -->
+  <div id="successModal" class="modal-overlay">
+    <div class="modal">
+      <div class="success-message">
+        <h2>Pré-Diagnóstico concluído com sucesso!</h2>
+        <p>Seu relatório está pronto para download.</p>
+        <button id="downloadButton" class="btn-secondary">
+          <span>Baixar Relatório PDF</span>
+        </button>
+        <button id="newDiagnosticButton" class="btn-outline">Novo Diagnóstico</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Error -->
+  <div id="errorModal" class="modal-overlay">
+    <div class="modal">
+      <div class="error-message-global">
+        <h2>Ocorreu um erro ao processar os dados</h2>
+        <p>Por favor, tente novamente mais tarde.</p>
+        <button id="tryAgainButton" class="btn-outline">Tentar Novamente</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/jquery-3.7.1.min.js"></script>
+  <script src="../js/masks.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/form.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
