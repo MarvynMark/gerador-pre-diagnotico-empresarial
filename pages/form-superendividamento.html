@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulário de Pré-Diagnóstico Superendividamento</title>
+  <title>Formulário de Diagnóstico Superendividamento</title>
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/form.css">
@@ -21,7 +21,7 @@
     </div>
     <div class="form-container">
       <header class="form-header">
-        <h1>Formulário de Pré-Diagnóstico de viabilidade de suspensão/revisão de dívidas pela lei do superendividamento</h1>
+        <h1>Formulário de Diagnóstico de viabilidade de suspensão/revisão de dívidas pela lei do superendividamento</h1>
         <p>Preencha os dados da empresa para gerar um relatório de pré-diagnóstico personalizado</p>
       </header>
 
@@ -36,7 +36,7 @@
           </div>
 
           <div class="form-group">
-            <label for="profissao">Profissão</label>
+            <label for="profissao">Qual sua profissão/área de trabalho?</label>
             <select id="profissao" name="profissao" required>
               <option value="">Selecione uma profissão</option>
               <option value="1">Forças Armadas</option>
@@ -70,7 +70,7 @@
           </div>
 
           <div class="form-group">
-            <label for="possuiPatologia">Possui patologia/doença</label>
+            <label for="possuiPatologia">Você possui alguma patologia/doença?</label>
             <select id="possuiPatologia" name="possuiPatologia" required>
               <option value="">Selecione uma opção</option>
               <option value="sim">Sim</option>
@@ -80,7 +80,7 @@
           </div>
 
           <div class="form-group">
-            <label for="possuiDependentes">Possui dependentes financeiros</label>
+            <label for="possuiDependentes">Você possui algum dependente financeiro?</label>
              <select id="possuiDependentes" name="possuiDependentes" required>
               <option value="">Selecione uma opção</option>
               <option value="Sim">Sim</option>
@@ -90,7 +90,7 @@
           </div>
 
           <div class="form-group" id="divAlgumDependenteComPatologia" style="display: none;">
-            <label for="algumDependenteComPatologia">Algum dependente com patologia/doença</label>
+            <label for="algumDependenteComPatologia">Algum dependente possui patologia/doença?</label>
              <select id="algumDependenteComPatologia" name="algumDependenteComPatologia">
               <option value="">Selecione uma opção</option>
               <option value="sim">Sim</option>
@@ -127,7 +127,7 @@
   <div id="successModal" class="modal-overlay">
     <div class="modal">
       <div class="success-message">
-        <h2>Pré-Diagnóstico concluído com sucesso!</h2>
+        <h2>Diagnóstico concluído com sucesso!</h2>
         <p>Seu relatório está pronto para download.</p>
         <button id="downloadButton" class="btn-secondary">
           <span>Baixar Relatório PDF</span>

@@ -228,7 +228,7 @@ function setupFormListenersVeiculo() {
   });
  
   selectTemSeguroEmbutido.addEventListener('change', function() {
-    const isSim = this.value === 'Sim';
+    const isSim = this.value === 'sim';
     
     if (isSim) {
       divSabeValorNoContrato.style.display = 'block';
@@ -246,7 +246,7 @@ function setupFormListenersVeiculo() {
   });
 
   selectSabeValorNoContrato.addEventListener('change', function() {
-    const isSim = this.value === 'Sim';
+    const isSim = this.value === 'sim';
     
     if (isSim) {
       divValorQueConstaNoContrato.style.display = 'block';  
