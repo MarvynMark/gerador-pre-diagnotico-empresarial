@@ -42,15 +42,61 @@
           </div>
 
           <div class="form-group">
-            <label for="seguradora">Seguradora/Operadora</label>
-            <input type="text" id="seguradora" name="seguradora" required>
-            <span class="error-message" id="seguradora-error"></span>
+            <label for="inicioContrato">Inicio do contrato</label>
+            <input type="date" id="inicioContrato" name="inicioContrato" required>
+            <span class="error-message" id="inicioContrato-error"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="fimContrato">Fim do contrato</label>
+            <input type="date" id="fimContrato" name="fimContrato" required>
+            <span class="error-message" id="fimContrato-error"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="valorInicioMensalidade">Valor da mensalidade no inicio do contrato</label>
+            <input type="text" id="valorInicioMensalidade" name="valorInicioMensalidade" class="money" required>
+            <span class="error-message" id="valorInicioMensalidade-error"></span>
           </div>
 
           <div class="form-group">
-            <label for="periodo">Período analisado</label>
-            <input type="text" id="periodo" name="periodo" required>
-            <span class="error-message" id="periodo-error"></span>
+            <label for="valorAtualMensalidade">Valor atual da mensalidade</label>
+            <input type="text" id="valorAtualMensalidade" name="valorAtualMensalidade" class="money" required>
+            <span class="error-message" id="valorAtualMensalidade-error"></span>
+          </div>
+
+           <div class="form-group">
+            <label for="mesDoReajusteAnual">Mês do reajuste anual</label>
+            <select id="mesDoReajusteAnual" name="mesDoReajusteAnual" required>
+              <option value="">Selecione uma opção</option>
+              <option value="1">Janeiro</option>
+              <option value="2">Fevereiro</option>
+              <option value="3">Março</option>
+              <option value="4">Abril</option>
+              <option value="5">Maio</option>
+              <option value="6">Junho</option>
+              <option value="7">Julho</option>
+              <option value="8">Agosto</option>
+              <option value="9">Setembro</option>
+              <option value="10">Outubro</option>
+              <option value="11">Novembro</option>
+              <option value="12">Dezembro</option>
+            </select>
+          </div>
+
+           <div class="form-group">
+            <label for="querIncluirJuros">Você quer incluir juros na restituição?</label>
+            <select id="querIncluirJuros" name="querIncluirJuros" required>
+              <option value="">Selecione uma opção</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="seguradora">Seguradora/Operadora</label>
+            <input type="text" id="seguradora" name="seguradora" required>
+            <span class="error-message" id="seguradora-error"></span>
           </div>
 
           <div class="form-group">
