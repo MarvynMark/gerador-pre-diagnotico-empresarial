@@ -74,21 +74,21 @@ function pdfName() {
   if (tipoFormulario == "vendasCartao") {
     let razaoSocial = formDataObject.razaoSocial;
     razaoSocial = razaoSocial.replace(/[^a-zA-Z0-9\s]/g, '');
-    return `Pré-Diagnóstico – Recuperação em Vendas por Cartão - ${razaoSocial}.pdf`;
+    return `Diagnóstico – Recuperação em Vendas por Cartão - ${razaoSocial}.pdf`;
 
   } else if (tipoFormulario == "veiculo") {
     let nome = formDataObject.nome;
     nome = nome.replace(/[^a-zA-Z0-9\s]/g, '');
-    return `Pré-diagnóstico - Financiamento de Veículo - ${nome}.pdf`;
+    return `Diagnóstico - Financiamento de Veículo - ${nome}.pdf`;
 
   } else if (tipoFormulario == "medico") {
     let nome = formDataObject.nome;
     nome = nome.replace(/[^a-zA-Z0-9\s]/g, '');
-    return `Pré-diagnóstico - Plano de Saúde - ${nome}.pdf`;
+    return `Diagnóstico - Plano de Saúde - ${nome}.pdf`;
 
   } else if (tipoFormulario == "superendividamento") {
     let nome = formDataObject.nome;
     nome = nome.replace(/[^a-zA-Z0-9\s]/g, '');
-    return `Pré-diagnóstico - Superindividamento - ${nome}.pdf`;
+    return `Diagnóstico - Superindividamento - ${nome}.pdf`;
   }
 }
