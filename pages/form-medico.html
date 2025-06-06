@@ -25,7 +25,7 @@
         <p>Preencha os dados da empresa para gerar um relatório de pré-diagnóstico personalizado</p>
       </header>
 
-      <form id="diagnosticMedicoForm" class="customTooltipAlvo">
+      <form id="diagnosticMedicoForm">
         <input type="text" id="tipoFormulario" name="tipoFormulario" value="medico" hidden>
 
         <div class="form-grid">
@@ -43,13 +43,13 @@
 
           <div class="form-group">
             <label for="inicioContrato">Inicio do contrato</label>
-            <input type="date" id="inicioContrato" name="inicioContrato" required>
+            <input type="month" id="inicioContrato" name="inicioContrato" required>
             <span class="error-message" id="inicioContrato-error"></span>
           </div>
           
           <div class="form-group">
             <label for="fimContrato">Fim do contrato</label>
-            <input type="date" id="fimContrato" name="fimContrato" required>
+            <input type="month" id="fimContrato" name="fimContrato" required>
             <span class="error-message" id="fimContrato-error"></span>
           </div>
           
@@ -60,28 +60,9 @@
           </div>
 
           <div class="form-group">
-            <label for="valorAtualMensalidade">Valor atual da mensalidade</label>
+            <label for="valorAtualMensalidade">Valor atual da mensalidade (contrato)</label>
             <input type="text" id="valorAtualMensalidade" name="valorAtualMensalidade" class="money" required>
             <span class="error-message" id="valorAtualMensalidade-error"></span>
-          </div>
-
-           <div class="form-group">
-            <label for="mesDoReajusteAnual">Mês do reajuste anual</label>
-            <select id="mesDoReajusteAnual" name="mesDoReajusteAnual" required>
-              <option value="">Selecione uma opção</option>
-              <option value="1">Janeiro</option>
-              <option value="2">Fevereiro</option>
-              <option value="3">Março</option>
-              <option value="4">Abril</option>
-              <option value="5">Maio</option>
-              <option value="6">Junho</option>
-              <option value="7">Julho</option>
-              <option value="8">Agosto</option>
-              <option value="9">Setembro</option>
-              <option value="10">Outubro</option>
-              <option value="11">Novembro</option>
-              <option value="12">Dezembro</option>
-            </select>
           </div>
 
            <div class="form-group">
@@ -114,7 +95,7 @@
         </div>
 
         <div class="form-actions">
-          <button type="submit" id="submitButton" class="btn-primary" disabled style="cursor: not-allowed;">
+          <button type="submit" id="submitButton" class="btn-primary">
             <span class="btn-text">Calcular resultados</span>
             <span class="spinner hidden"></span>
           </button>
