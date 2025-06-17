@@ -40,38 +40,23 @@
             <input type="text" id="cpfCnpj" name="cpf" class="cpf" required>
             <span class="error-message" id="cpf-error"></span>
           </div>
-
+         
           <div class="form-group">
-            <label for="inicioContrato">Inicio do contrato</label>
-            <input type="month" id="inicioContrato" name="inicioContrato" required>
-            <span class="error-message" id="inicioContrato-error"></span>
-          </div>
-          
-          <div class="form-group">
-            <label for="fimContrato">Fim do contrato</label>
-            <input type="month" id="fimContrato" name="fimContrato" required>
-            <span class="error-message" id="fimContrato-error"></span>
-          </div>
-          
-          <div class="form-group">
-            <label for="valorInicioMensalidade">Valor da mensalidade no inicio do contrato</label>
-            <input type="text" id="valorInicioMensalidade" name="valorInicioMensalidade" class="money" required>
-            <span class="error-message" id="valorInicioMensalidade-error"></span>
+            <label for="valorMensalidadeAntes">Valor da mensalidade antes do reajuste (ultimo ano)</label>
+            <input type="text" id="valorMensalidadeAntes" name="valorMensalidadeAntes" class="money" required>
+            <span class="error-message" id="valorMensalidadeAntes-error"></span>
           </div>
 
           <div class="form-group">
-            <label for="valorAtualMensalidade">Valor atual da mensalidade (contrato)</label>
-            <input type="text" id="valorAtualMensalidade" name="valorAtualMensalidade" class="money" required>
-            <span class="error-message" id="valorAtualMensalidade-error"></span>
+            <label for="valorMensalidadeAtual">Valor da mensalidade atual</label>
+            <input type="text" id="valorMensalidadeAtual" name="valorMensalidadeAtual" class="money" required>
+            <span class="error-message" id="valorMensalidadeAtual-error"></span>
           </div>
 
-           <div class="form-group">
-            <label for="querIncluirJuros">Você quer incluir juros na restituição?</label>
-            <select id="querIncluirJuros" name="querIncluirJuros" required>
-              <option value="">Selecione uma opção</option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
+          <div class="form-group">
+            <label for="mesAumento">Mês que houve o aumento</label>
+            <input type="month" id="mesAumento" name="mesAumento" required>
+            <span class="error-message" id="mesAumento-error"></span>
           </div>
 
           <div class="form-group">
